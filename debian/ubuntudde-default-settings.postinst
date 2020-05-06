@@ -1,0 +1,101 @@
+#!/bin/sh
+# postinst script 
+# see: dh_installdeb(1)
+#DEBHELPER#
+
+
+case "$1" in
+    configure)
+        if [ -f /opt/cxoffice/etc/cxoffice.conf ]; then
+            sed -i "s#;;\(\"AntiVirusScan\" = \)\"\"#\1\"never\"#" /opt/cxoffice/etc/cxoffice.conf
+        fi
+
+        if [ -f /etc/skel/.bashrc ]; then
+            sed -i '/#\ Set\ LS_COLORS\ environment/,+5d' /etc/skel/.bashrc
+            cat >> /etc/skel/.bashrc << EOF 
+# Set LS_COLORS environment by Deepin
+if [[ ("\$TERM" = *256color || "\$TERM" = screen* || "\$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
+    eval \$(dircolors -b /etc/lscolor-256color)
+else
+    eval \$(dircolors)
+fi
+EOF
+        fi
+        if [ -f /etc/profile.d/xft-resources.sh ]; then
+            rm /etc/profile.d/xft-resources.sh
+        fi
+        if [ -d /etc/skel/Templates/ ]; then
+            rm -rf /etc/skel/Templates/
+        fi
+        if [ -d /etc/skel/.Templates/ ]; then
+            rm -rf /etc/skel/.Templates/
+        fi
+        if [ -d /etc/skel/.config/hexchat/ ]; then
+            rm -rf /etc/skel/.config/hexchat/
+        fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    ;;
+    triggered)
+    
+    if [ -f /opt/cxoffice/etc/cxoffice.conf ]; then
+        sed -i "s#;;\(\"AntiVirusScan\" = \)\"\"#\1\"never\"#" /opt/cxoffice/etc/cxoffice.conf
+        date
+    fi
+    ;;
+
+    *)
+
+        exit 0
+    ;;
+esac
+# Set Max Size for journal
+	if [ -f /etc/systemd/journald.conf ]; then
+		sed -i '22s/^.*$/SystemMaxUse=500M/'  /etc/systemd/journald.conf
+		sed -i '15s/^.*$/Storage=persistent/'  /etc/systemd/journald.conf
+    fi
+	if [ -f /etc/logrotate.conf ] &&! grep -qr "size 1000M" /etc/logrotate.conf; then
+		echo  "size 1000M\n/var/log/*.log {\n    maxsize 100M\n    hourly\n    missingok\n    rotate 8\n    compress\n    notifempty\n    nocreate\n}" >> /etc/logrotate.conf
+    fi
+# set greeter pam no waiting
+#	if [ -f /etc/pam.d/common-auth ]; then
+#		cp /etc/pam.d/common-auth /etc/pam.d/common-auth-nodelay
+#		sed -i "s/nullok_secure.*/nullok_secure nodelay/g" /etc/pam.d/common-auth-nodelay
+#	fi
+	# if [ -f /etc/pam.d/lightdm ]; then
+	# sed -i "s/@include common-auth.*/@include common-auth-nodelay/g" /etc/pam.d/lightdm
+	#fi
+if [ -f /etc/X11/xinit/xinitrc.d/50-systemd-user.sh ]; then
+	chmod 755 /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+fi
+# make skel dirs.
+mkdir -p /etc/skel/Desktop;
+mkdir -p /etc/skel/Documents;
+mkdir -p /etc/skel/Downloads;
+mkdir -p /etc/skel/Music;
+mkdir -p /etc/skel/Pictures;
+mkdir -p /etc/skel/Videos;
+mkdir -p /etc/skel/.Public;
+mkdir -p /etc/skel/.Templates;
+
+# add default pictures
+skel_wallpapers=/etc/skel/Pictures/Wallpapers
+if [ ! -d $skel_wallpapers ]; then
+	mkdir -p $skel_wallpapers
+fi
+
+for file in `ls /usr/share/wallpapers/deepin/`
+do
+	if [ ! -f $skel_wallpapers/$file ]; then
+		ln -s  /usr/share/wallpapers/deepin/$file $skel_wallpapers/$file
+
+	fi
+done
+
+# Provide convenience for dde components like dock, file-manager.
+# They need to watch this directory while it is not created by default.
+mkdir -p /etc/skel/.local/share/Trash
+
+exit 0

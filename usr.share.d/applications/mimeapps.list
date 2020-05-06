@@ -1,0 +1,20 @@
+[Default Applications]
+inode/directory=/usr/share/applications/dde-file-manager.desktop
+image/bmp=/usr/share/applications/org.gnome.gThumb.desktop
+image/gif=/usr/share/applications/org.gnome.gThumb.desktop
+image/jpg=/usr/share/applications/org.gnome.gThumb.desktop
+image/jpeg=/usr/share/applications/org.gnome.gThumb.desktop
+image/png=/usr/share/applications/org.gnome.gThumb.desktop
+image/pbm=/usr/share/applications/org.gnome.gThumb.desktop
+image/pgm=/usr/share/applications/org.gnome.gThumb.desktop
+image/ppm=/usr/share/applications/org.gnome.gThumb.desktop
+image/xbm=/usr/share/applications/org.gnome.gThumb.desktop
+image/xpm=/usr/share/applications/org.gnome.gThumb.desktop
+image/svg=/usr/share/applications/org.gnome.gThumb.desktop
+image/dds=/usr/share/applications/org.gnome.gThumb.desktop
+image/icns=/usr/share/applications/org.gnome.gThumb.desktop
+image/jp2=/usr/share/applications/org.gnome.gThumb.desktop
+image/tga=/usr/share/applications/org.gnome.gThumb.desktop
+image/tiff=/usr/share/applications/org.gnome.gThumb.desktop
+image/wbmp=/usr/share/applications/org.gnome.gThumb.desktop
+image/webp=/usr/share/applications/org.gnome.gThumb.desktop

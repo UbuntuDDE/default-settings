@@ -1,0 +1,72 @@
+#!/usr/bin/env python2
+# vim: set ts=4 sw=4 fileencoding=utf-8:
+# Luomio <nohappiness@gmail.com>
+# Filename: dde-first-run.py
+# Create Date: 27-03, 13
+
+from os import path, remove
+import locale
+import os
+import shutil
+import getpass
+import re
+import subprocess
+
+def querySystemType():
+    f = open("/etc/deepin-version", "r")
+    content = f.read()
+
+    r = re.search(r"^Type=(.*)$", content, re.M)
+
+    return r.group(1)
+
+if __name__ == "__main__":
+    lang, charset = locale.getdefaultlocale()
+    sys_type = querySystemType()
+
+    if path.exists("/usr/bin/dde-introduction"):
+        subprocess.Popen("/usr/bin/dde-introduction")
+
+    # create symlink for introduction video
+    introduction_video_path = "/usr/share/dde-introduction/demo.mp4"
+    if path.exists(introduction_video_path):
+        os.symlink(introduction_video_path, path.expanduser('~/Videos/dde-introduction.mp4'))
+
+    if sys_type != "Desktop":
+        desktops = ['dde-computer.desktop', 'dde-trash.desktop']
+        desktop_path = path.expanduser("~/Desktop")
+        if not path.exists(desktop_path):
+            os.makedirs(desktop_path)
+        for desktop in desktops:
+            desktop_file = path.join("/usr/share/applications", desktop)
+            if path.exists(desktop_file):
+                shutil.copyfile(desktop_file, path.join(desktop_path, desktop))
+
+    chrome_config = None
+    if not path.exists(path.expanduser('~/.config/google-chrome')):
+        if path.exists('/usr/share/deepin-default-settings/google-chrome/override-chrome-config.tar'):
+            chrome_config = '/usr/share/deepin-default-settings/google-chrome/override-chrome-config.tar'
+        elif path.exists('/usr/share/deepin-default-settings/google-chrome/chrome-config-%s.tar' % lang):
+            chrome_config = '/usr/share/deepin-default-settings/google-chrome/chrome-config-%s.tar' % lang
+        elif path.exists('/usr/share/deepin-default-settings/google-chrome/chrome-config.tar'):
+            chrome_config = '/usr/share/deepin-default-settings/google-chrome/chrome-config.tar'
+        else:
+            chrome_config = None
+
+    if chrome_config is not None:
+        import tarfile
+        tar = tarfile.open(chrome_config)
+        tar.extractall(path.expanduser('~/.config/'))
+        tar.close()
+
+    if path.exists(path.expanduser('~/.config/google-chrome/PepperFlash/latest-component-updated-flash')):
+        user_name=getpass.getuser()
+        pepperflash = path.expanduser('~/.config/google-chrome/PepperFlash/latest-component-updated-flash')
+        with open(pepperflash,"r") as f:
+            lines = f.readlines()
+        with open(pepperflash,"w") as f:
+            for line in lines:
+                f.write(re.sub(r'deepin',user_name,line))
+
+    if path.exists(path.expanduser('~/.config/autostart/dde-first-run.desktop')):
+        remove(path.expanduser('~/.config/autostart/dde-first-run.desktop'))

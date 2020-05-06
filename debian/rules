@@ -1,0 +1,7 @@
+#! /usr/bin/make -f
+ARCH := $(shell dpkg --print-architecture)
+%:
+	dh $@
+
+override_dh_auto_install:
+	dh_auto_install --destdir=$(CURDIR)/debian/tmp
