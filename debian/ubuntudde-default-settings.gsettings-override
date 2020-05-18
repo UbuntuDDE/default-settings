@@ -1,3 +1,6 @@
+[com.deepin.dde.appearance]
+background-uris=['file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg']
+
 [com.deepin.dde.desktop]
 show-home-icon=true
 show-computer-icon=true
@@ -12,7 +15,7 @@ show-desktop-icons=true
 picture-uri='file:///usr/share/backgrounds/default_background.jpg'
 
 [x.dm.slick-greeter]
-font-name='Noto Sans 11'
+font-name='Noto Sans 9'
 background='/usr/share/backgrounds'
 draw-grid=false
 theme-name='deepin'
