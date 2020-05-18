@@ -1,3 +1,9 @@
+ubuntudde-default-settings (1.0.3) groovy; urgency=medium
+
+  [Joshua Peisach]
+  * Welcome to the Groovy Gorilla!
+  * Add gschemas for slick-greeter and desktop icons
+
 ubuntudde-default-settings (1.0.2) focal; urgency=medium
 
   * Initial Release
