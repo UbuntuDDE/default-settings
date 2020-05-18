@@ -1,0 +1,22 @@
+[com.deepin.dde.appearance]
+background-uris=['file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg', 'file:///usr/share/backgrounds/default_background.jpg']
+
+[com.deepin.dde.desktop]
+show-home-icon=true
+show-computer-icon=true
+show-trash-icon=true
+show-trashed-item-number=true
+
+[com.deepin.wrap.gnome.desktop.background]
+picture-uri='file:///usr/share/backgrounds/default_background.jpg'
+show-desktop-icons=true
+
+[com.deepin.wrap.gnome.desktop.screensaver]
+picture-uri='file:///usr/share/backgrounds/default_background.jpg'
+
+[x.dm.slick-greeter]
+font-name='Noto Sans 9'
+background='/usr/share/backgrounds'
+draw-grid=false
+theme-name='deepin'
+icon-theme-name='deepin'

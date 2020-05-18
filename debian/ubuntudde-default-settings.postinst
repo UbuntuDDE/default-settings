@@ -1,5 +1,5 @@
 #!/bin/sh
-# postinst script 
+# postinst script
 # see: dh_installdeb(1)
 #DEBHELPER#
 
@@ -12,7 +12,7 @@ case "$1" in
 
         if [ -f /etc/skel/.bashrc ]; then
             sed -i '/#\ Set\ LS_COLORS\ environment/,+5d' /etc/skel/.bashrc
-            cat >> /etc/skel/.bashrc << EOF 
+            cat >> /etc/skel/.bashrc << EOF
 # Set LS_COLORS environment by Deepin
 if [[ ("\$TERM" = *256color || "\$TERM" = screen* || "\$TERM" = xterm* ) && -f /etc/lscolor-256color ]]; then
     eval \$(dircolors -b /etc/lscolor-256color)
@@ -39,7 +39,7 @@ EOF
 
     ;;
     triggered)
-    
+
     if [ -f /opt/cxoffice/etc/cxoffice.conf ]; then
         sed -i "s#;;\(\"AntiVirusScan\" = \)\"\"#\1\"never\"#" /opt/cxoffice/etc/cxoffice.conf
         date
@@ -97,5 +97,11 @@ done
 # Provide convenience for dde components like dock, file-manager.
 # They need to watch this directory while it is not created by default.
 mkdir -p /etc/skel/.local/share/Trash
+
+# Hide mpv media player (celluloid is already there)
+# Deepin doesn't seem to have a directory you can hide any apps-so we
+# replace it with a NoDisplay file
+rm /usr/share/applications/mpv.desktop
+cp mpv.desktop /usr/share/applications
 
 exit 0
