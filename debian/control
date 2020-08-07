@@ -2,8 +2,8 @@ Source: ubuntudde-default-settings
 Section: admin
 Priority: optional
 Maintainer: Arun Kumar Pariyar <expertaruncorp@gmail.com>
-Standards-Version: 3.9.4
-Build-Depends: debhelper (>= 8.1.3~)
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (=12)
 
 Package: ubuntudde-default-settings
 Architecture: all
