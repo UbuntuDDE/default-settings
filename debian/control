@@ -12,10 +12,3 @@ Suggests: binfmt-support
 Description: default settings for UbuntuDDE
  This package does tweaking and to provide better experience of UbuntuDDE desktop
  environment.
-
-Package: ubuntudde-default-settings-tuning
-Architecture: all
-Depends: ${misc:Depends} 
-Description: default settings for UbuntuDDE - misc overrides
- This package does tweaking and to provide better experience of UbuntuDDE desktop
- environment.
