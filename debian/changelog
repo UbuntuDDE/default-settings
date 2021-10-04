@@ -1,3 +1,39 @@
+ubuntudde-default-settings (1.1.8-1) hirsute; urgency=medium
+
+  * Add udev rules to hide snap volumes.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Sun, 28 Mar 2021 22:05:18 +0545
+
+ubuntudde-default-settings (1.1.7-1ubuntu1) hirsute; urgency=medium
+
+  * Rebuild for hirsute.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Mon, 01 Mar 2021 18:19:00 +0545
+
+ubuntudde-default-settings (1.1.7-1) groovy; urgency=medium
+
+  * Added Refresh button when right click in empty space.
+
+ -- Arun Kumar Pariyar <expertaruncorp@gmail.com>  Tue, 27 Oct 2020 16:58:21 +0545
+
+ubuntudde-default-settings (1.1.6-1) groovy; urgency=medium
+
+  * Updated apport blacklist.
+
+ -- Arun Kumar Pariyar <expertaruncorp@gmail.com>  Sat, 24 Oct 2020 17:21:08 +0545
+
+ubuntudde-default-settings (1.1.5-1) groovy; urgency=medium
+
+  * Added open as admin on file manager right click.
+
+ -- Arun Kumar Pariyar <expertaruncorp@gmail.com>  Wed, 21 Oct 2020 18:27:44 +0545
+
+ubuntudde-default-settings (1.1.4-1) groovy; urgency=medium
+
+  * Add /usr/bin/lightdm-deepin-greeter to apport-blacklist.
+
+ -- Arun Kumar Pariyar <expertaruncorp@gmail.com>  Sun, 04 Oct 2020 23:38:17 +0545
+
 ubuntudde-default-settings (1.1.3-3) groovy; urgency=medium
 
   * Prepare for Groovy release.

@@ -5,3 +5,4 @@ install:
 	mkdir -p $(DESTDIR)/etc/apt
 	cp -r etc.d/* $(DESTDIR)/etc/
 	cp -r usr.share.d/* $(DESTDIR)/usr/share
+	cp -r usr.lib.d/* $(DESTDIR)/usr/lib

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Open as Administrator
+X-DFM-MenuTypes=SingleDir;EmptyArea;SingleFile;
+Exec=pkexec --disable-internal-agent /usr/bin/dde-file-manager %u
+X-DFM-ExcludeMimeTypes=application/xml;

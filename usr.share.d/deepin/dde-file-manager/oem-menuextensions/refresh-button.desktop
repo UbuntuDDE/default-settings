@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Refresh
+X-DFM-MenuTypes=EmptyArea;
+Exec=xdotool key F5
+X-DFM-ExcludeMimeTypes=application/xml;
