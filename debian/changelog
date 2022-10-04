@@ -1,3 +1,27 @@
+ubuntudde-default-settings (1.1.9.2ubuntu1) jammy; urgency=medium
+
+  * Upload to jammy.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Tue, 02 Aug 2022 16:56:22 +0545
+
+ubuntudde-default-settings (1.1.9.2) impish; urgency=medium
+
+  * Rebuild move release-upgrade to postinst.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Tue, 16 Nov 2021 16:11:47 +0545
+
+ubuntudde-default-settings (1.1.9.1) impish; urgency=medium
+
+  * Set release-upgrades to never.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Sat, 13 Nov 2021 23:37:32 +0545
+
+ubuntudde-default-settings (1.1.8-1ubuntu1) impish; urgency=medium
+
+  * Release to impish.
+
+ -- Arun Kumar Pariyar <openarungeek@gmail.com>  Mon, 04 Oct 2021 14:25:18 +0545
+
 ubuntudde-default-settings (1.1.8-1) hirsute; urgency=medium
 
   * Add udev rules to hide snap volumes.

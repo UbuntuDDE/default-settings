@@ -6,6 +6,10 @@
 
 case "$1" in
     configure)
+	if [ -f /etc/update-manager/release-upgrades ]; then
+            sed -i "s/Prompt=.*/Prompt=never/g" /etc/update-manager/release-upgrades
+        fi
+
         if [ -f /opt/cxoffice/etc/cxoffice.conf ]; then
             sed -i "s#;;\(\"AntiVirusScan\" = \)\"\"#\1\"never\"#" /opt/cxoffice/etc/cxoffice.conf
         fi

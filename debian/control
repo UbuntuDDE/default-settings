@@ -2,7 +2,7 @@ Source: ubuntudde-default-settings
 Section: admin
 Priority: optional
 Maintainer: Arun Kumar Pariyar <expertaruncorp@gmail.com>
-Standards-Version: 4.5.1
+Standards-Version: 4.5.0
 Build-Depends: debhelper-compat (=12)
 
 Package: ubuntudde-default-settings
